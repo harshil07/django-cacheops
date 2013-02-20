@@ -2,6 +2,11 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
+class Characteristics(models.Model):
+    is_anonymous = models.BooleanField(default=False)
+    user = models.OneToOneField(User)
+
+
 class Category(models.Model):
     title = models.CharField(max_length=128)
 

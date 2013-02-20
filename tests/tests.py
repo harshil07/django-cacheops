@@ -84,7 +84,9 @@ class IssueTests(BaseTestCase):
 
     def test_29(self):
         users = User.objects.filter(username='Suor')
-        profiles = list(Profile.objects.filter(user__in=users).cache())
+        profiles = Profile.objects.exclude(user__characteristics__is_anonymous=False)
+        if profiles:
+            pass
 
 
 # Tests for proxy models, see #30
